@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinetix", "Cinetix\Cinetix.csproj", "{69B10F0D-215C-4750-969A-49587D39D272}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinetixUnitTest", "CinetixUnitTest\CinetixUnitTest.csproj", "{12A0154B-788E-4FF2-BB00-5912BEB2CDC8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69B10F0D-215C-4750-969A-49587D39D272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69B10F0D-215C-4750-969A-49587D39D272}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69B10F0D-215C-4750-969A-49587D39D272}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69B10F0D-215C-4750-969A-49587D39D272}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12A0154B-788E-4FF2-BB00-5912BEB2CDC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12A0154B-788E-4FF2-BB00-5912BEB2CDC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12A0154B-788E-4FF2-BB00-5912BEB2CDC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12A0154B-788E-4FF2-BB00-5912BEB2CDC8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B7D8F25-73AE-4EC7-8DE6-ECB53B054DDE}
+	EndGlobalSection
+EndGlobal
