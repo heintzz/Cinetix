@@ -9,7 +9,7 @@ namespace Cinetix
     public partial class Login : Form
     {
         public static string GetConnectionString()
-        {
+        {            
             return @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\college\3rd semester\object-oriented programming\CinetixBookApp\Cinetix\CinetixDB.mdf;Integrated Security=True;Connect Timeout=30";                       
         }
 
