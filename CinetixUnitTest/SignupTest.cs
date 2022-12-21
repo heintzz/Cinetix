@@ -68,7 +68,7 @@ namespace CinetixUnitTest
             string confirmPass = "asd";
 
             Signup signupClass = new Signup();
-            bool isEmpty = signupClass.IsFormFilled(name, email, password, confirmPass);
+            bool isEmpty = signupClass.IsFormEmpty(name, email, password, confirmPass);
 
             bool expected = false;
 

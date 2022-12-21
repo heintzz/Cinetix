@@ -39,7 +39,7 @@ namespace Cinetix
             }
         }
 
-        public bool IsFormFilled(string name, string email, string pass, string confirmPass)
+        public bool IsFormEmpty(string name, string email, string pass, string confirmPass)
         {
             return string.IsNullOrEmpty(name) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(pass) || string.IsNullOrEmpty(confirmPass);
         }
@@ -96,7 +96,7 @@ namespace Cinetix
 
         public void RegisterBtn_Click(object sender, EventArgs e)
         {
-            if (IsFormFilled(fullName.Text, email.Text, password.Text, confirmPass.Text)) 
+            if (IsFormEmpty(fullName.Text, email.Text, password.Text, confirmPass.Text)) 
             {
                 MessageBox.Show("Please complete the form.");
                 return;

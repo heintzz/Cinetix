@@ -41,7 +41,7 @@ namespace Cinetix
             this.balanceLabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.NumOrder = new System.Windows.Forms.TextBox();
-            this.reservationDate = new System.Windows.Forms.DateTimePicker();
+            this.ReservationDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -73,8 +73,7 @@ namespace Cinetix
             this.InputName.Location = new System.Drawing.Point(27, 197);
             this.InputName.Name = "InputName";
             this.InputName.Size = new System.Drawing.Size(716, 31);
-            this.InputName.TabIndex = 1;
-            this.InputName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputName_KeyDown);
+            this.InputName.TabIndex = 1;            
             // 
             // BookBtn
             // 
@@ -152,16 +151,16 @@ namespace Cinetix
             this.NumOrder.TabIndex = 2;
             this.NumOrder.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NumOrder_KeyDown);
             // 
-            // reservationDate
+            // ReservationDate
             // 
-            this.reservationDate.CalendarFont = new System.Drawing.Font("Ubuntu", 20F);
-            this.reservationDate.Font = new System.Drawing.Font("Ubuntu", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reservationDate.Location = new System.Drawing.Point(24, 311);
-            this.reservationDate.MaxDate = new System.DateTime(2022, 12, 31, 0, 0, 0, 0);
-            this.reservationDate.MinDate = new System.DateTime(2022, 12, 18, 0, 0, 0, 0);
-            this.reservationDate.Name = "reservationDate";
-            this.reservationDate.Size = new System.Drawing.Size(333, 39);
-            this.reservationDate.TabIndex = 18;
+            this.ReservationDate.CalendarFont = new System.Drawing.Font("Ubuntu", 20F);
+            this.ReservationDate.Font = new System.Drawing.Font("Ubuntu", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReservationDate.Location = new System.Drawing.Point(24, 311);
+            this.ReservationDate.MaxDate = new System.DateTime(2022, 12, 31, 0, 0, 0, 0);
+            this.ReservationDate.MinDate = new System.DateTime(2022, 12, 18, 0, 0, 0, 0);
+            this.ReservationDate.Name = "ReservationDate";
+            this.ReservationDate.Size = new System.Drawing.Size(333, 39);
+            this.ReservationDate.TabIndex = 18;
             // 
             // label3
             // 
@@ -179,7 +178,7 @@ namespace Cinetix
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1422, 1041);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.reservationDate);
+            this.Controls.Add(this.ReservationDate);
             this.Controls.Add(this.NumOrder);
             this.Controls.Add(this.balanceLabel);
             this.Controls.Add(this.label5);
@@ -211,7 +210,7 @@ namespace Cinetix
         private Label balanceLabel;
         private Label label5;
         private TextBox NumOrder;
-        private DateTimePicker reservationDate;
+        private DateTimePicker ReservationDate;
         private Label label3;
     }
 }

@@ -19,5 +19,19 @@ namespace CinetixUnitTest
 
             Assert.AreEqual(expected, isEmpty, "Form belum selesai diisi.");
         }
+
+        [TestMethod]
+        public void LoginAuthTest()
+        {
+            string email = "mhasnanr@gmail.com";
+            string password = "bismillahbisa";
+
+            Login loginClass = new Login();
+            bool isExist = loginClass.IsUserExist(email, password);
+
+            bool expected = false;
+
+            Assert.AreEqual(expected, isExist, "Pengguna tidak terdaftar.");
+        }
     }
 }

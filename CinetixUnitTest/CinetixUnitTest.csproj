@@ -53,6 +53,7 @@
     <Compile Include="SignupTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LoginTest.cs" />
+    <Compile Include="MakeReservationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

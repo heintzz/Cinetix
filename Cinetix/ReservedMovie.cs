@@ -110,9 +110,7 @@ namespace Cinetix
                         Size = new Size(300, 347),
                         ImageLocation = "d:/college/3rd semester/object-oriented programming/CinetixBookApp/gambar1.jpg",
                         SizeMode = PictureBoxSizeMode.CenterImage,                        
-                    };
-
-                    
+                    };                    
 
                     FlowLayoutPanel descPanel = new FlowLayoutPanel
                     {

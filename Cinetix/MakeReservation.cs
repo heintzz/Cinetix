@@ -12,97 +12,98 @@ namespace Cinetix
         private int TotalPrice { get; set; }
 
         private readonly string connectionString = Login.GetConnectionString();
-        public MakeReservation(string title)
+        public MakeReservation(string title = "")
         {
             InitializeComponent();
             titleLabel.Text = title;
+
+            // Total price equal to price per person on first initiation
             TotalPrice = 35000;                   
+        }
+
+        public bool IsFormEmpty(string name, string date, string amount)
+        {
+            return string.IsNullOrEmpty(name) || string.IsNullOrEmpty(date) || string.IsNullOrEmpty(amount); 
+        }
+
+        public void UpdateBalance(int remainder)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+
+            string query = "INSERT INTO dbo.Reservation (id, title, date, email, amountOfOrder) VALUES (@id, @title, @date, @email, @amount)";
+            SqlCommand command = new SqlCommand(query, connection);
+            IDGenerator number = new IDGenerator();
+            string date = number.getUniqueId();
+            command.Parameters.AddWithValue("id", date);
+            command.Parameters.AddWithValue("title", titleLabel.Text);
+            command.Parameters.AddWithValue("date", ReservationDate.Text);
+            command.Parameters.AddWithValue("email", Home.EmailAddress);
+            command.Parameters.AddWithValue("amount", int.Parse(NumOrder.Text));
+            command.ExecuteNonQuery();
+
+            string updateBalanceQuery = "UPDATE Users SET balance = @balance WHERE email = @email";
+            SqlCommand updateCommand = new SqlCommand(updateBalanceQuery, connection);
+            updateCommand.Parameters.AddWithValue("email", Home.EmailAddress);
+            updateCommand.Parameters.AddWithValue("balance", remainder.ToString());
+            updateCommand.ExecuteNonQuery();
+
+            connection.Close();
+        }
+
+        public bool IsNaturalNumber(int orderNum)
+        {            
+            return orderNum > 0;
         }
 
         private void BookBtn_click(object sender, EventArgs e)
         {
-            try
-            {                
-                SqlConnection connection = new SqlConnection(connectionString);
+            int remainder = Balance - TotalPrice;
 
-                connection.Open();
-
-                if (this.InputName.Text.ToString().Length > 0)
-                {
-                    string query = "INSERT INTO dbo.Reservation (id, title, date, email, amountOfOrder) VALUES (@id, @title, @date, @email, @amount)";
-                    SqlCommand command = new SqlCommand(query, connection);
-
-                    IDGenerator number = new IDGenerator();
-                    string date = number.getUniqueId();
-
-                    int remainder = Balance - TotalPrice;
-                    if (remainder >= 0)
-                    {
-                        command.Parameters.AddWithValue("id", date);
-                        command.Parameters.AddWithValue("title", titleLabel.Text);
-                        command.Parameters.AddWithValue("date", reservationDate.Text);
-                        command.Parameters.AddWithValue("email", Home.EmailAddress);
-                        command.Parameters.AddWithValue("amount", int.Parse(NumOrder.Text));
-
-                        string updateBalanceQuery = "UPDATE dbo.Users SET balance = @balance WHERE email = @email";
-                        SqlCommand updateCommand = new SqlCommand(updateBalanceQuery, connection);                       
-
-                        updateCommand.Parameters.AddWithValue("email", Home.EmailAddress);
-                        updateCommand.Parameters.AddWithValue("balance", remainder.ToString());
-
-                        command.ExecuteNonQuery();
-                        updateCommand.ExecuteNonQuery();
-
-                        MessageBox.Show("success");
-
-                        this.Hide();
-
-                        ReservedMovie listBooked = new ReservedMovie();
-                        listBooked.ShowDialog();
-                    }
-                    else
-                    {
-                        MessageBox.Show("payment failed. insufficient balance");
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("failed");
-                }
-
-                connection.Close();
-            } catch (SqlException ex)
+            if (IsFormEmpty(InputName.Text, ReservationDate.Text, NumOrder.Text))
             {
-                MessageBox.Show("Gagal menghubungkan");
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show("Please fill out the form");
+                return;
+            }            
+
+            if (remainder >= 0)
+            {               
+                UpdateBalance(remainder);
+
+                this.Hide();
+                ReservedMovie listBooked = new ReservedMovie();
+                listBooked.ShowDialog();
             }
+            else
+            {
+                MessageBox.Show("payment failed. insufficient balance");
+            }                      
         }
 
         private void NumOrder_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (!int.TryParse(NumOrder.Text, out _))
-                {                    
-                    MessageBox.Show("Please enter a valid integer.");
-                }
-                else
+                if (int.TryParse(NumOrder.Text, out _))
                 {
-                    int numPeople = int.Parse(this.NumOrder.Text);
-
-                    if (numPeople > 0)
+                    int orderNum = int.Parse(this.NumOrder.Text);
+                    if (IsNaturalNumber(orderNum))
                     {
-                        // Calculate the total price
                         int pricePerPerson = 35000;
-                        TotalPrice = numPeople * pricePerPerson;
+                        TotalPrice = orderNum * pricePerPerson;
 
-                        // Update the label or TextBox that displays the total price
-                        this.totalPrice.Text = String.Format(CultureInfo.CreateSpecificCulture("id-id"), "Rp{0:N}", TotalPrice).Split(',')[0];                                                
-                    } else
+                        totalPrice.Text = String.Format(CultureInfo.CreateSpecificCulture("id-id"), "Rp{0:N}", TotalPrice).Split(',')[0];
+
+                    }
+                    else
                     {
                         MessageBox.Show("The minimum number is 1");
                     }
+                    this.BookBtn.Focus();
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a valid integer.");
                 }
             }
         }
@@ -110,27 +111,19 @@ namespace Cinetix
         private void MakeReservation_Load(object sender, EventArgs e)
         {
             NumOrder.Text = "1";            
+            ReservationDate.MinDate = DateTime.Now;
 
             SqlConnection connection = new SqlConnection(connectionString);
-
             connection.Open();
 
-            string query = "SELECT balance FROM dbo.Users WHERE email = @email";
+            string query = "SELECT balance FROM Users WHERE email = @email";
             SqlCommand command = new SqlCommand(query, connection);
-
             command.Parameters.AddWithValue("@email", Home.EmailAddress);
+
             Balance = (int)command.ExecuteScalar();
             balanceLabel.Text = String.Format(CultureInfo.CreateSpecificCulture("id-id"), "Rp{0:N}", Balance).Split(',')[0];
 
             connection.Close();
         }
-
-        private void InputName_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                this.NumOrder.Focus();
-            }
-        }        
     }
 }
