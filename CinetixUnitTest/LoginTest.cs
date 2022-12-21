@@ -29,7 +29,7 @@ namespace CinetixUnitTest
             Login loginClass = new Login();
             bool isExist = loginClass.IsUserExist(email, password);
 
-            bool expected = false;
+            bool expected = true;
 
             Assert.AreEqual(expected, isExist, "Pengguna tidak terdaftar.");
         }

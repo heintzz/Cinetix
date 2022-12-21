@@ -55,7 +55,14 @@ namespace Cinetix
         {            
             return orderNum > 0;
         }
+        
+        public int CalculateTotalPrice(int orderNum, int pricePerPerson)
+        {            
+            TotalPrice = orderNum * pricePerPerson;
+            totalPrice.Text = String.Format(CultureInfo.CreateSpecificCulture("id-id"), "Rp{0:N}", TotalPrice).Split(',')[0];
 
+            return TotalPrice;
+        }        
         private void BookBtn_click(object sender, EventArgs e)
         {
             int remainder = Balance - TotalPrice;
@@ -89,11 +96,7 @@ namespace Cinetix
                     int orderNum = int.Parse(this.NumOrder.Text);
                     if (IsNaturalNumber(orderNum))
                     {
-                        int pricePerPerson = 35000;
-                        TotalPrice = orderNum * pricePerPerson;
-
-                        totalPrice.Text = String.Format(CultureInfo.CreateSpecificCulture("id-id"), "Rp{0:N}", TotalPrice).Split(',')[0];
-
+                        CalculateTotalPrice(orderNum, 35000);
                     }
                     else
                     {

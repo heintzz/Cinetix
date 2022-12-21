@@ -23,7 +23,7 @@ namespace CinetixUnitTest
         }
 
         [TestMethod]
-        public void NumberOfOrderTest()
+        public void AmountOfOrderTest()
         {
             int amountOfOrder = -1;
             MakeReservation makeReservationClass = new MakeReservation();
@@ -32,6 +32,18 @@ namespace CinetixUnitTest
             bool expected = false;
 
             Assert.AreEqual(expected, isNaturalNumber, "Jumlah pesanan harus lebih dari 0.");
+        }
+
+        public void CheckTotalPrice()
+        {
+            int person = 4;
+            int pricePerPerson = 35000;
+            int totalPrice = 140000;
+
+            MakeReservation makeReservationClass = new MakeReservation();
+            int testTotalPrice = makeReservationClass.CalculateTotalPrice(person, pricePerPerson);
+
+            Assert.AreEqual(totalPrice, testTotalPrice);
         }
 
     }
