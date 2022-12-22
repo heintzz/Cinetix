@@ -68,7 +68,7 @@
             this.showReservedMovie.TabIndex = 3;
             this.showReservedMovie.Text = "/";
             this.showReservedMovie.UseVisualStyleBackColor = true;
-            this.showReservedMovie.Click += new System.EventHandler(this.showReservedMovie_Click);
+            this.showReservedMovie.Click += new System.EventHandler(this.ShowReservedMovie_Click);
             // 
             // Home
             // 

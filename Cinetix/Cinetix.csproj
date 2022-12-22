@@ -84,6 +84,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CinetixDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="EditBookedMovie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditBookedMovie.Designer.cs">
+      <DependentUpon>EditBookedMovie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     <Compile Include="Signup.Designer.cs">
       <DependentUpon>Signup.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EditBookedMovie.resx">
+      <DependentUpon>EditBookedMovie.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
       <SubType>Designer</SubType>

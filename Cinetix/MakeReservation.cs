@@ -26,21 +26,26 @@ namespace Cinetix
             return string.IsNullOrEmpty(name) || string.IsNullOrEmpty(date) || string.IsNullOrEmpty(amount); 
         }
 
-        public void UpdateBalance(int remainder)
-        {
-            SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
+        public void UpdateDatabase(SqlConnection conn)
+        {                        
+            string query = "INSERT INTO Reservation (id, title, date, email, amountOfOrder, image) VALUES (@id, @title, @date, @email, @amount, @image)";
 
-            string query = "INSERT INTO dbo.Reservation (id, title, date, email, amountOfOrder) VALUES (@id, @title, @date, @email, @amount)";
-            SqlCommand command = new SqlCommand(query, connection);
+            SqlCommand command = new SqlCommand(query, conn);
             IDGenerator number = new IDGenerator();
+
             string date = number.getUniqueId();
             command.Parameters.AddWithValue("id", date);
             command.Parameters.AddWithValue("title", titleLabel.Text);
             command.Parameters.AddWithValue("date", ReservationDate.Text);
             command.Parameters.AddWithValue("email", Home.EmailAddress);
             command.Parameters.AddWithValue("amount", int.Parse(NumOrder.Text));
+            command.Parameters.AddWithValue("image", MovieDetail.src_img);
             command.ExecuteNonQuery();
+        }
+        public void UpdateBalance(int remainder)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();         
 
             string updateBalanceQuery = "UPDATE Users SET balance = @balance WHERE email = @email";
             SqlCommand updateCommand = new SqlCommand(updateBalanceQuery, connection);
@@ -48,6 +53,7 @@ namespace Cinetix
             updateCommand.Parameters.AddWithValue("balance", remainder.ToString());
             updateCommand.ExecuteNonQuery();
 
+            UpdateDatabase(connection);
             connection.Close();
         }
 

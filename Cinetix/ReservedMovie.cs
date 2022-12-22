@@ -20,11 +20,19 @@ namespace Cinetix
             InitializeComponent();
         }
 
-        private void RemoveBookedMovie(object sender, EventArgs e)
+        private void EditClickHandler(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            FlowLayoutPanel box = (FlowLayoutPanel)button.Parent;
-            FlowLayoutPanel container = (FlowLayoutPanel)box.Parent;
+            FlowLayoutPanel container = (FlowLayoutPanel)button.Parent;
+
+            this.Hide();
+            EditBookedMovie form = new EditBookedMovie(container.Name);
+            form.ShowDialog();
+        }
+        private void DeleteClickHandler(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            FlowLayoutPanel container = (FlowLayoutPanel)button.Parent;            
 
             string connectionString = Login.GetConnectionString();
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -67,14 +75,14 @@ namespace Cinetix
             
         }
 
-        private void Form4_Load(object sender, EventArgs e)
+        private void ReservedMovie_Load(object sender, EventArgs e)
         {
             string connectionString = Login.GetConnectionString();
             SqlConnection connection = new SqlConnection(connectionString);
 
             connection.Open();
 
-            string query = "SELECT * FROM dbo.Reservation WHERE email = @email";
+            string query = "SELECT * FROM Reservation WHERE email = @email";
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@email", Home.EmailAddress);
@@ -84,7 +92,7 @@ namespace Cinetix
                 List<FlowLayoutPanel> panels = new List<FlowLayoutPanel>();
 
                 int panelWidth = 1360;
-                int panelHeight = 354;
+                int panelHeight = 405;
 
                 int xLocation = 22;
                 int yLocation = 90;
@@ -95,6 +103,7 @@ namespace Cinetix
                     string title = reader.GetString(1);
                     string date = reader.GetString(2);
                     int numOrder = reader.GetInt32(4);
+                    string src_img = reader.GetString(5);
 
                     FlowLayoutPanel panel = new FlowLayoutPanel
                     {
@@ -102,21 +111,22 @@ namespace Cinetix
                         Size = new Size(panelWidth, panelHeight),
                         Location = new Point(xLocation, yLocation),
                         BackColor = Color.White,
-                        FlowDirection = FlowDirection.TopDown,
+                        FlowDirection = FlowDirection.LeftToRight,
                     };
 
                     PictureBox picture = new PictureBox
                     {
-                        Size = new Size(300, 347),
-                        ImageLocation = "d:/college/3rd semester/object-oriented programming/CinetixBookApp/gambar1.jpg",
-                        SizeMode = PictureBoxSizeMode.CenterImage,                        
-                    };                    
+                        Size = new Size(300, 400),
+                        SizeMode = PictureBoxSizeMode.StretchImage,                        
+                    };
+
+                    picture.ImageLocation = src_img;
 
                     FlowLayoutPanel descPanel = new FlowLayoutPanel
                     {
                         FlowDirection = FlowDirection.TopDown,
-                        Size = new Size(550, panel.Height),
-                        Margin = new Padding(15, 0, 0, 0),
+                        Size = new Size(950, panel.Height),
+                        Margin = new Padding(20, 0, 0, 0),                        
                     };
 
                     Label movieTitle = new Label
@@ -161,23 +171,40 @@ namespace Cinetix
                         {
                             BorderSize = 0,
                         },
-                        Margin = new Padding(0, 100, 0, 0),
+                        Margin = new Padding(0, panel.Height - 45, 0, 0),
+                        Cursor = Cursors.Hand,
+                    };
+
+                    Button buttonEdit = new Button
+                    {
+                        Size = new Size(30, 30),
+                        FlatStyle = FlatStyle.Flat,
+                        BackgroundImage = new Bitmap("D:/college/3rd semester/object-oriented programming/CinetixBookApp/edit.png"),
+                        BackgroundImageLayout = ImageLayout.Center,
+                        FlatAppearance =
+                        {
+                            BorderSize = 0,
+                        },
+                        Margin = new Padding(15, panel.Height - 45, 0, 0),
+                        Cursor = Cursors.Hand,
                     };
 
                     descPanel.Controls.Add(movieTitle);
                     descPanel.Controls.Add(cinemaPlace);
                     descPanel.Controls.Add(dateOfReservation);
                     descPanel.Controls.Add(numOfOrder);
-                    descPanel.Controls.Add(buttonDel);
-
+                    
                     panel.Controls.Add(picture);                 
                     panel.Controls.Add(descPanel);
-                                 
+                    panel.Controls.Add(buttonDel);
+                    panel.Controls.Add(buttonEdit);
+
                     panels.Add(panel);
 
                     yLocation += panelHeight + 20;
                     
-                    buttonDel.Click += RemoveBookedMovie;
+                    buttonDel.Click += DeleteClickHandler;
+                    buttonEdit.Click += EditClickHandler;
                 }
 
                 this.Controls.AddRange(panels.ToArray());

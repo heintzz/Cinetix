@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.Net;
 using System.Security.Cryptography;
 using System.Windows.Forms;
 
@@ -8,18 +10,10 @@ namespace Cinetix
 {
     public partial class Home : Form
     {
-        public static string EmailAddress;
+        public static string EmailAddress;        
 
-        List<MovieReserved> students = new List<MovieReserved>()
-        {
-                new MovieReserved(){ IdMovie = 1, Username="Harry Potter", Src=@"d:\\college\\3rd semester\\object-oriented programming\\CinetixBookApp\\gambar1.jpg"},
-                new MovieReserved(){ IdMovie = 2, Username="Bridge to Terabithia", Src= @"d:\\college\\3rd semester\\object-oriented programming\\CinetixBookApp\\gambar2.jpg"},
-                new MovieReserved(){ IdMovie = 3, Username="Blue Lock", Src = @"d:\\college\\3rd semester\\object-oriented programming\\CinetixBookApp\\gambar3.jpg"},
-                new MovieReserved(){ IdMovie = 4, Username="Haikyuu", Src = @"d:\\college\\3rd semester\\object-oriented programming\\CinetixBookApp\\gambar4.jpg"},
-                new MovieReserved(){ IdMovie = 5, Username="Wednesday", Src = @"d:\\college\\3rd semester\\object-oriented programming\\CinetixBookApp\\gambar5.jpg"},
-                new MovieReserved(){ IdMovie = 6, Username="Enola Holmes", Src = @"d:\\college\\3rd semester\\object-oriented programming\\CinetixBookApp\\gambar5.jpg"},
-                new MovieReserved(){ IdMovie = 7, Username="Kenji", Src = @"d:\\college\\3rd semester\\object-oriented programming\\CinetixBookApp\\gambar5.jpg"}
-        };
+        List<PictureBox> pictures = new List<PictureBox>();
+        List<Label> labels = new List<Label>();
 
         public Home(string email)
         {
@@ -28,82 +22,99 @@ namespace Cinetix
             EmailAddress = email;            
         }
 
-        public void changeForm(object sender, EventArgs e)
+        public void ChangeForm(object sender, EventArgs e)
         {
             this.Hide();
 
             Control control = (Control)sender;
-            string[] name = control.Name.ToString().Split('_');
+            int id = int.Parse(control.Name);
 
-            MovieDetail detailMovie = new MovieDetail(name[1]);
+            MovieDetail detailMovie = new MovieDetail(id);
             detailMovie.ShowDialog();
         }
 
-        private void Home_Load(object sender, EventArgs e)
-        {         
-            this.pictureBox1.ImageLocation = @"d:\college\3rd semester\object-oriented programming\CinetixBookApp\hero.png";
-
-            List<PictureBox> pictures = new List<PictureBox>();
-            List<Label> labels = new List<Label>();
-
+        public void ShowAllMovies()
+        {
             int widthMovie = 320;
             int heightMovie = 440;
             int locX = 16;
             int locY = 460;
 
-            void createBox(string name, string src)
+            void createBox(int id, string title, string src, string rating)
             {
                 var moviePic = new PictureBox
                 {
-                    Name = "pictureBox_" + name,
+                    Name = id.ToString(),
                     Size = new Size(widthMovie, heightMovie),
                     Location = new Point(locX, locY),
                     SizeMode = PictureBoxSizeMode.CenterImage,
                     Cursor = Cursors.Hand,
-                    ImageLocation = src
                 };
-                moviePic.Click += new EventHandler(changeForm);
+
+                moviePic.ImageLocation = src;
+
+                moviePic.Click += new EventHandler(ChangeForm);
 
                 Random rnd = new Random();
 
                 var label = new Label
                 {
-                    Text = name + "\n" + Math.Round((rnd.NextDouble() + 4) * 2, 1) + "/10",
+                    Text = title + "\n" + rating + "/10",
                     Size = new Size(moviePic.Size.Width, 72),
-                    BackColor = Color.White, 
+                    BackColor = Color.White,
                     Font = new Font("Ubuntu", 14),
                     Padding = new Padding(10, 10, 10, 10)
                 };
 
-                label.Location = new Point(moviePic.Left, moviePic.Bottom - label.Size.Height);            
+                label.Location = new Point(moviePic.Left, moviePic.Bottom - label.Size.Height);
                 label.BringToFront();
-               
+
                 pictures.Add(moviePic);
                 labels.Add(label);
             }
 
-            foreach (MovieReserved student in students)
+            string connectionString = Login.GetConnectionString();
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                if (student.IdMovie % 5 == 0)
-                {
-                    locX = 16;
-                    locY += 470;
+                connection.Open();
+                string query = "SELECT id, title, rating, image FROM Movie";
+                SqlCommand command = new SqlCommand(query, connection); 
+                SqlDataReader reader = command.ExecuteReader();
 
-                    createBox(student.Username, student.Src);                    
+                while (reader.Read()) {
+                    int id = reader.GetInt32(0);
+                    string title = reader.GetString(1);
+                    string rating = reader.GetString(2);
+                    string image = reader.GetString(3);
+                    
+
+                    if (id % 5 == 0)
+                    {
+                        locX = 16;
+                        locY += 470;
+                        createBox(id, title, image, rating);
+                    }
+                    else
+                    {
+                        createBox(id, title, image, rating);
+                        locX += 346;
+                    }
                 }
-                else
-                {
-                    createBox(student.Username, student.Src);
-                    locX += 346;
-                }
 
-            }
+                this.Controls.AddRange(labels.ToArray());
+                this.Controls.AddRange(pictures.ToArray());
 
-            this.Controls.AddRange(labels.ToArray());
-            this.Controls.AddRange(pictures.ToArray());
+                connection.Close();
+            }            
+        }
+
+        private void Home_Load(object sender, EventArgs e)
+        {         
+            this.pictureBox1.ImageLocation = @"d:\college\3rd semester\object-oriented programming\CinetixBookApp\hero.png";
+            ShowAllMovies();
         }
        
-        private void showReservedMovie_Click(object sender, EventArgs e)
+        private void ShowReservedMovie_Click(object sender, EventArgs e)
         {
             this.Hide();
 
