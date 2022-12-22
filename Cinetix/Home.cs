@@ -36,7 +36,7 @@ namespace Cinetix
         public void ShowAllMovies()
         {
             int widthMovie = 320;
-            int heightMovie = 440;
+            int heightMovie = 460;
             int locX = 16;
             int locY = 460;
 
@@ -47,7 +47,7 @@ namespace Cinetix
                     Name = id.ToString(),
                     Size = new Size(widthMovie, heightMovie),
                     Location = new Point(locX, locY),
-                    SizeMode = PictureBoxSizeMode.CenterImage,
+                    SizeMode = PictureBoxSizeMode.StretchImage,
                     Cursor = Cursors.Hand,
                 };
 

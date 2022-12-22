@@ -98,7 +98,7 @@ namespace Cinetix
                 List<FlowLayoutPanel> panels = new List<FlowLayoutPanel>();
 
                 int panelWidth = 1360;
-                int panelHeight = 405;
+                int panelHeight = 425;
 
                 int xLocation = 22;
                 int yLocation = 90;
@@ -122,7 +122,7 @@ namespace Cinetix
 
                     PictureBox picture = new PictureBox
                     {
-                        Size = new Size(300, 400),
+                        Size = new Size(300, 420),
                         SizeMode = PictureBoxSizeMode.StretchImage,                        
                     };
 
