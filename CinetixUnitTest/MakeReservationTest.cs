@@ -34,6 +34,7 @@ namespace CinetixUnitTest
             Assert.AreEqual(expected, isNaturalNumber, "Jumlah pesanan harus lebih dari 0.");
         }
 
+        [TestMethod]
         public void CheckTotalPrice()
         {
             int person = 4;
