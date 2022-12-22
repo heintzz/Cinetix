@@ -134,5 +134,13 @@ namespace Cinetix
 
             connection.Close();
         }
+
+        private void BackToHome_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            Home form = new Home(Home.EmailAddress);
+            form.ShowDialog();            
+        }
     }
 }

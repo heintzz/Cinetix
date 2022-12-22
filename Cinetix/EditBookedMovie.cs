@@ -7,7 +7,7 @@ namespace Cinetix
 {
     public partial class EditBookedMovie : Form
     {
-        private string id;
+        private readonly string id;
         private int numOrder;
         public void GetAllInfo()
         {            
@@ -50,24 +50,36 @@ namespace Cinetix
 
         private void EditBtn_Click(object sender, EventArgs e)
         {
-            string connectionString = Login.GetConnectionString();
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {                
-                string updateQuery = "UPDATE Reservation SET date = @date WHERE id = @id AND email = @email";
-                using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
+            DialogResult result = MessageBox.Show("Are you sure you want to change the date reservation?", "Confirm Date Change", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                string connectionString = Login.GetConnectionString();
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    connection.Open();
-                    
-                    updateCommand.Parameters.AddWithValue("id", id);
-                    updateCommand.Parameters.AddWithValue("email", Home.EmailAddress);                    
-                    updateCommand.Parameters.AddWithValue("date", ReservationDate.Text);
+                    string updateQuery = "UPDATE Reservation SET date = @date WHERE id = @id AND email = @email";
+                    using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
+                    {
+                        connection.Open();
 
-                    updateCommand.ExecuteNonQuery();
+                        updateCommand.Parameters.AddWithValue("id", id);
+                        updateCommand.Parameters.AddWithValue("email", Home.EmailAddress);
+                        updateCommand.Parameters.AddWithValue("date", ReservationDate.Text);
 
-                    connection.Close();
+                        updateCommand.ExecuteNonQuery();
+
+                        connection.Close();
+                    }
                 }
-            }
-                
+           }                            
         }
+
+        private void BackToHome_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            Home form = new Home(Home.EmailAddress);
+            form.ShowDialog();
+        }        
     }
 }

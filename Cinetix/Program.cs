@@ -16,7 +16,7 @@ namespace Cinetix
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ReservedMovie());
+            Application.Run(new Login());
         }
     }
 }

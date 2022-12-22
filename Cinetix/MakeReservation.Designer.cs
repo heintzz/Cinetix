@@ -43,6 +43,7 @@ namespace Cinetix
             this.NumOrder = new System.Windows.Forms.TextBox();
             this.ReservationDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -73,7 +74,7 @@ namespace Cinetix
             this.InputName.Location = new System.Drawing.Point(27, 197);
             this.InputName.Name = "InputName";
             this.InputName.Size = new System.Drawing.Size(716, 31);
-            this.InputName.TabIndex = 1;            
+            this.InputName.TabIndex = 1;
             // 
             // BookBtn
             // 
@@ -172,11 +173,26 @@ namespace Cinetix
             this.label3.TabIndex = 19;
             this.label3.Text = "Date";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.SystemColors.Highlight;
+            this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label4.Font = new System.Drawing.Font("Poppins", 16F);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(1327, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 39);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "Home";
+            this.label4.Click += new System.EventHandler(this.BackToHome_Click);
+            // 
             // MakeReservation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1422, 1041);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.ReservationDate);
             this.Controls.Add(this.NumOrder);
@@ -212,5 +228,6 @@ namespace Cinetix
         private TextBox NumOrder;
         private DateTimePicker ReservationDate;
         private Label label3;
+        private Label label4;
     }
 }

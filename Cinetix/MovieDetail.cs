@@ -57,6 +57,13 @@ namespace Cinetix
             MakeReservation bookForm = new MakeReservation(title);
             bookForm.ShowDialog();
         }
-      
+
+        private void BackToHome_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            Home form = new Home(Home.EmailAddress);
+            form.ShowDialog();                
+        }
     }
 }

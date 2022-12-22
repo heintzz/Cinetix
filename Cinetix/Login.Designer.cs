@@ -83,7 +83,7 @@
             this.LoginBtn.Image = ((System.Drawing.Image)(resources.GetObject("LoginBtn.Image")));
             this.LoginBtn.Location = new System.Drawing.Point(850, 422);
             this.LoginBtn.Name = "LoginBtn";
-            this.LoginBtn.Size = new System.Drawing.Size(353, 94);
+            this.LoginBtn.Size = new System.Drawing.Size(352, 94);
             this.LoginBtn.TabIndex = 22;
             this.LoginBtn.UseVisualStyleBackColor = true;
             this.LoginBtn.Click += new System.EventHandler(this.LoginBtn_Click);
@@ -96,7 +96,7 @@
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(666, 32);
             this.password.TabIndex = 17;
-            this.password.UseSystemPasswordChar = true; 
+            this.password.UseSystemPasswordChar = true;
             // 
             // label3
             // 
@@ -115,7 +115,7 @@
             this.email.Location = new System.Drawing.Point(708, 198);
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(666, 32);
-            this.email.TabIndex = 15;            
+            this.email.TabIndex = 15;
             // 
             // label2
             // 

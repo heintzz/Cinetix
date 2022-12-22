@@ -70,8 +70,7 @@ namespace Cinetix
 
             if (IsUserExist(email.Text, password.Text))
             {
-                this.Hide();
-                MessageBox.Show("berhasil");
+                this.Hide();                
 
                 Home form = new Home(email.Text);
                 form.ShowDialog();

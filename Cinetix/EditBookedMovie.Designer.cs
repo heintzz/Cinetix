@@ -38,6 +38,7 @@
             this.NumOrderLabel = new System.Windows.Forms.Label();
             this.NumOrder = new System.Windows.Forms.NumericUpDown();
             this.EditBtn = new System.Windows.Forms.Button();
+            this.BackToHome = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.MoviePoster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumOrder)).BeginInit();
             this.SuspendLayout();
@@ -62,58 +63,58 @@
             // CinemaLabel
             // 
             this.CinemaLabel.AutoSize = true;
-            this.CinemaLabel.Font = new System.Drawing.Font("Poppins", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CinemaLabel.Location = new System.Drawing.Point(489, 104);
+            this.CinemaLabel.Font = new System.Drawing.Font("Poppins", 24F);
+            this.CinemaLabel.Location = new System.Drawing.Point(489, 111);
             this.CinemaLabel.Name = "CinemaLabel";
-            this.CinemaLabel.Size = new System.Drawing.Size(100, 37);
+            this.CinemaLabel.Size = new System.Drawing.Size(152, 56);
             this.CinemaLabel.TabIndex = 4;
             this.CinemaLabel.Text = "Cinema";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Poppins", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(489, 201);
+            this.label4.Font = new System.Drawing.Font("Poppins", 24F);
+            this.label4.Location = new System.Drawing.Point(490, 222);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 37);
+            this.label4.Size = new System.Drawing.Size(101, 56);
             this.label4.TabIndex = 5;
             this.label4.Text = "Date";
             // 
             // ReservationDate
             // 
-            this.ReservationDate.Font = new System.Drawing.Font("Ubuntu", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReservationDate.Location = new System.Drawing.Point(496, 241);
+            this.ReservationDate.Font = new System.Drawing.Font("Ubuntu", 20F);
+            this.ReservationDate.Location = new System.Drawing.Point(499, 279);
             this.ReservationDate.MinDate = new System.DateTime(2022, 12, 21, 0, 0, 0, 0);
             this.ReservationDate.Name = "ReservationDate";
-            this.ReservationDate.Size = new System.Drawing.Size(259, 32);
+            this.ReservationDate.Size = new System.Drawing.Size(259, 38);
             this.ReservationDate.TabIndex = 6;
             // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.White;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Ubuntu", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(496, 144);
+            this.textBox1.Font = new System.Drawing.Font("Ubuntu", 20F);
+            this.textBox1.Location = new System.Drawing.Point(499, 170);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(259, 25);
+            this.textBox1.Size = new System.Drawing.Size(259, 31);
             this.textBox1.TabIndex = 8;
             this.textBox1.Text = "Tubes Cinema XXI";
             // 
             // NumOrderLabel
             // 
             this.NumOrderLabel.AutoSize = true;
-            this.NumOrderLabel.Font = new System.Drawing.Font("Poppins", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumOrderLabel.Location = new System.Drawing.Point(491, 295);
+            this.NumOrderLabel.Font = new System.Drawing.Font("Poppins", 24F);
+            this.NumOrderLabel.Location = new System.Drawing.Point(491, 338);
             this.NumOrderLabel.Name = "NumOrderLabel";
-            this.NumOrderLabel.Size = new System.Drawing.Size(196, 37);
+            this.NumOrderLabel.Size = new System.Drawing.Size(296, 56);
             this.NumOrderLabel.TabIndex = 9;
             this.NumOrderLabel.Text = "Amount Of Order";
             // 
             // NumOrder
             // 
-            this.NumOrder.Font = new System.Drawing.Font("Ubuntu", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumOrder.Location = new System.Drawing.Point(498, 335);
+            this.NumOrder.Font = new System.Drawing.Font("Ubuntu", 20F);
+            this.NumOrder.Location = new System.Drawing.Point(502, 394);
             this.NumOrder.Maximum = new decimal(new int[] {
             9,
             0,
@@ -126,7 +127,7 @@
             0});
             this.NumOrder.Name = "NumOrder";
             this.NumOrder.ReadOnly = true;
-            this.NumOrder.Size = new System.Drawing.Size(53, 32);
+            this.NumOrder.Size = new System.Drawing.Size(53, 38);
             this.NumOrder.TabIndex = 10;
             this.NumOrder.Value = new decimal(new int[] {
             4,
@@ -150,11 +151,26 @@
             this.EditBtn.UseVisualStyleBackColor = true;
             this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
             // 
+            // BackToHome
+            // 
+            this.BackToHome.AutoSize = true;
+            this.BackToHome.BackColor = System.Drawing.SystemColors.Highlight;
+            this.BackToHome.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BackToHome.Font = new System.Drawing.Font("Poppins", 16F);
+            this.BackToHome.ForeColor = System.Drawing.Color.White;
+            this.BackToHome.Location = new System.Drawing.Point(1327, 9);
+            this.BackToHome.Name = "BackToHome";
+            this.BackToHome.Size = new System.Drawing.Size(83, 39);
+            this.BackToHome.TabIndex = 23;
+            this.BackToHome.Text = "Home";
+            this.BackToHome.Click += new System.EventHandler(this.BackToHome_Click);
+            // 
             // EditBookedMovie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1422, 1041);
+            this.Controls.Add(this.BackToHome);
             this.Controls.Add(this.EditBtn);
             this.Controls.Add(this.NumOrder);
             this.Controls.Add(this.NumOrderLabel);
@@ -185,5 +201,6 @@
         private System.Windows.Forms.Label NumOrderLabel;
         private System.Windows.Forms.NumericUpDown NumOrder;
         private System.Windows.Forms.Button EditBtn;
+        private System.Windows.Forms.Label BackToHome;
     }
 }

@@ -31,48 +31,54 @@ namespace Cinetix
         }
         private void DeleteClickHandler(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
-            FlowLayoutPanel container = (FlowLayoutPanel)button.Parent;            
+            DialogResult result = MessageBox.Show(
+            "Are you sure you want to cancel the reservation? We won't be able to refund your money.",
+            "Confirm Cancel",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Warning);
 
-            string connectionString = Login.GetConnectionString();
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (result == DialogResult.Yes)
             {
-                connection.Open();
-                string query = "DELETE FROM dbo.Reservation WHERE id = @id";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                Button button = (Button)sender;
+                FlowLayoutPanel container = (FlowLayoutPanel)button.Parent;
+
+                string connectionString = Login.GetConnectionString();
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    command.Parameters.AddWithValue("@id", container.Name);
-
-                    int deleted = 0;
-                    try
+                    connection.Open();
+                    string query = "DELETE FROM dbo.Reservation WHERE id = @id";
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        deleted = command.ExecuteNonQuery();
+                        command.Parameters.AddWithValue("@id", container.Name);
 
-                    }
-                    catch (SqlException err)
-                    {
-                        MessageBox.Show("error: ", err.Message);
-                    }
-            
-                    if (deleted == 0)
-                    {
-                        MessageBox.Show("Gagal menghapus");
-                    }
-                    else
-                    {
-                        container.Dispose();
-                        this.Hide();
+                        int deleted = 0;
+                        try
+                        {
+                            deleted = command.ExecuteNonQuery();
 
-                        //MessageBox.Show("Success!");
+                        }
+                        catch (SqlException err)
+                        {
+                            MessageBox.Show("error: ", err.Message);
+                        }
 
-                        ReservedMovie form = new ReservedMovie();
-                        form.ShowDialog();
+                        if (deleted == 0)
+                        {
+                            MessageBox.Show("Gagal menghapus");
+                        }
+                        else
+                        {
+                            container.Dispose();
+                            this.Hide();
+                            
+                            ReservedMovie form = new ReservedMovie();
+                            form.ShowDialog();
+                        }
                     }
+
+                    connection.Close();
                 }
-
-                connection.Close();
-            }
-            
+            }                       
         }
 
         private void ReservedMovie_Load(object sender, EventArgs e)
@@ -85,7 +91,7 @@ namespace Cinetix
             string query = "SELECT * FROM Reservation WHERE email = @email";
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@email", Home.EmailAddress);
+            command.Parameters.AddWithValue("email", Home.EmailAddress);
 
             using (SqlDataReader reader = command.ExecuteReader())
             {

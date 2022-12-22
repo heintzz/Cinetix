@@ -41,6 +41,7 @@
             this.Genre = new System.Windows.Forms.Label();
             this.Review = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.BackToHome = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.MoviePoster)).BeginInit();
             this.SuspendLayout();
             // 
@@ -176,6 +177,20 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Reviews";
             // 
+            // BackToHome
+            // 
+            this.BackToHome.AutoSize = true;
+            this.BackToHome.BackColor = System.Drawing.SystemColors.Highlight;
+            this.BackToHome.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BackToHome.Font = new System.Drawing.Font("Poppins", 16F);
+            this.BackToHome.ForeColor = System.Drawing.Color.White;
+            this.BackToHome.Location = new System.Drawing.Point(1327, 9);
+            this.BackToHome.Name = "BackToHome";
+            this.BackToHome.Size = new System.Drawing.Size(83, 39);
+            this.BackToHome.TabIndex = 22;
+            this.BackToHome.Text = "Home";
+            this.BackToHome.Click += new System.EventHandler(this.BackToHome_Click);
+            // 
             // MovieDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -183,6 +198,7 @@
             this.AutoScroll = true;
             this.AutoScrollMargin = new System.Drawing.Size(0, 30);
             this.ClientSize = new System.Drawing.Size(1422, 1041);
+            this.Controls.Add(this.BackToHome);
             this.Controls.Add(this.Review);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Genre);
@@ -218,5 +234,6 @@
         private System.Windows.Forms.Label Genre;
         private System.Windows.Forms.Label Review;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label BackToHome;
     }
 }
