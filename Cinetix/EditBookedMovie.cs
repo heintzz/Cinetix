@@ -15,7 +15,7 @@ namespace Cinetix
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();               
-                string getData = "SELECT title, amountOfOrder, image FROM Reservation WHERE id = @id AND email = @email";
+                string getData = "SELECT title, amountOfOrder, date, image FROM Reservation WHERE id = @id AND email = @email";
                 using (SqlCommand getDataCommand = new SqlCommand(getData, connection))
                 {
                     getDataCommand.Parameters.AddWithValue("id", id);
@@ -26,12 +26,14 @@ namespace Cinetix
                         if (reader.Read())
                         {
                             string title = reader.GetString(0);
-                            numOrder = reader.GetInt32(1);
-                            string src_img = reader.GetString(2);
+                            numOrder = reader.GetInt32(1);                            
+                            string date = reader.GetString(2);
+                            string src_img = reader.GetString(3);
 
                             MovieTitle.Text = title;
                             NumOrder.Minimum = numOrder;
                             MoviePoster.ImageLocation = src_img;
+                            ReservationDate.Text = date; ;
                         }
                     }
                 }
