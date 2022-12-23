@@ -49,11 +49,11 @@ namespace Cinetix
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
-            this.titleLabel.Font = new System.Drawing.Font("Poppins", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Font = new System.Drawing.Font("Poppins", 24F);
             this.titleLabel.Location = new System.Drawing.Point(8, 35);
             this.titleLabel.MaximumSize = new System.Drawing.Size(1100, 0);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(199, 93);
+            this.titleLabel.Size = new System.Drawing.Size(120, 56);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Judul ";
             // 
@@ -61,7 +61,7 @@ namespace Cinetix
             // 
             this.NameLabel.AutoSize = true;
             this.NameLabel.Font = new System.Drawing.Font("Poppins", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameLabel.Location = new System.Drawing.Point(16, 138);
+            this.NameLabel.Location = new System.Drawing.Point(12, 107);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(121, 56);
             this.NameLabel.TabIndex = 1;
@@ -71,7 +71,7 @@ namespace Cinetix
             // 
             this.InputName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.InputName.Font = new System.Drawing.Font("Ubuntu", 20F);
-            this.InputName.Location = new System.Drawing.Point(27, 197);
+            this.InputName.Location = new System.Drawing.Point(23, 157);
             this.InputName.Name = "InputName";
             this.InputName.Size = new System.Drawing.Size(716, 31);
             this.InputName.TabIndex = 1;
@@ -96,7 +96,7 @@ namespace Cinetix
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(17, 377);
+            this.label1.Location = new System.Drawing.Point(12, 311);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(291, 56);
             this.label1.TabIndex = 2;
@@ -106,7 +106,7 @@ namespace Cinetix
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Poppins", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(16, 503);
+            this.label2.Location = new System.Drawing.Point(16, 417);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(190, 56);
             this.label2.TabIndex = 14;
@@ -116,7 +116,7 @@ namespace Cinetix
             // 
             this.totalPrice.AutoSize = true;
             this.totalPrice.Font = new System.Drawing.Font("Ubuntu", 24F);
-            this.totalPrice.Location = new System.Drawing.Point(22, 559);
+            this.totalPrice.Location = new System.Drawing.Point(22, 473);
             this.totalPrice.Name = "totalPrice";
             this.totalPrice.Size = new System.Drawing.Size(154, 39);
             this.totalPrice.TabIndex = 15;
@@ -126,7 +126,7 @@ namespace Cinetix
             // 
             this.balanceLabel.AutoSize = true;
             this.balanceLabel.Font = new System.Drawing.Font("Ubuntu", 24F);
-            this.balanceLabel.Location = new System.Drawing.Point(22, 740);
+            this.balanceLabel.Location = new System.Drawing.Point(22, 653);
             this.balanceLabel.Name = "balanceLabel";
             this.balanceLabel.Size = new System.Drawing.Size(0, 39);
             this.balanceLabel.TabIndex = 17;
@@ -135,7 +135,7 @@ namespace Cinetix
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Poppins", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(18, 684);
+            this.label5.Location = new System.Drawing.Point(18, 597);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(235, 56);
             this.label5.TabIndex = 16;
@@ -145,7 +145,7 @@ namespace Cinetix
             // 
             this.NumOrder.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.NumOrder.Font = new System.Drawing.Font("Ubuntu", 20F);
-            this.NumOrder.Location = new System.Drawing.Point(28, 438);
+            this.NumOrder.Location = new System.Drawing.Point(25, 361);
             this.NumOrder.MaxLength = 2;
             this.NumOrder.Name = "NumOrder";
             this.NumOrder.Size = new System.Drawing.Size(59, 31);
@@ -156,7 +156,7 @@ namespace Cinetix
             // 
             this.ReservationDate.CalendarFont = new System.Drawing.Font("Ubuntu", 20F);
             this.ReservationDate.Font = new System.Drawing.Font("Ubuntu", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReservationDate.Location = new System.Drawing.Point(24, 311);
+            this.ReservationDate.Location = new System.Drawing.Point(25, 257);
             this.ReservationDate.MaxDate = new System.DateTime(2022, 12, 31, 0, 0, 0, 0);
             this.ReservationDate.MinDate = new System.DateTime(2022, 12, 18, 0, 0, 0, 0);
             this.ReservationDate.Name = "ReservationDate";
@@ -167,7 +167,7 @@ namespace Cinetix
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Poppins", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(14, 252);
+            this.label3.Location = new System.Drawing.Point(12, 205);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(101, 56);
             this.label3.TabIndex = 19;

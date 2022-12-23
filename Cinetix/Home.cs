@@ -59,10 +59,10 @@ namespace Cinetix
 
                 var label = new Label
                 {
-                    Text = title + "\n" + rating + "/10",
-                    Size = new Size(moviePic.Size.Width, 72),
+                    Text = title + "\n\n" + rating + "/10",
+                    Size = new Size(moviePic.Size.Width, 100),
                     BackColor = Color.White,
-                    Font = new Font("Ubuntu", 14),
+                    Font = new Font("Ubuntu", 12),
                     Padding = new Padding(10, 10, 10, 10)
                 };
 

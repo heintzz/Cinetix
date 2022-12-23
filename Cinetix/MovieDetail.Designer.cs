@@ -49,19 +49,20 @@
             // 
             this.MoviePoster.Location = new System.Drawing.Point(26, 36);
             this.MoviePoster.Name = "MoviePoster";
-            this.MoviePoster.Size = new System.Drawing.Size(440, 640);
+            this.MoviePoster.Size = new System.Drawing.Size(440, 702);
+            this.MoviePoster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.MoviePoster.TabIndex = 0;
             this.MoviePoster.TabStop = false;
             // 
             // MovieTitle
             // 
             this.MovieTitle.AutoSize = true;
-            this.MovieTitle.Font = new System.Drawing.Font("Poppins", 32F);
+            this.MovieTitle.Font = new System.Drawing.Font("Poppins", 24F);
             this.MovieTitle.Location = new System.Drawing.Point(492, 36);
             this.MovieTitle.Margin = new System.Windows.Forms.Padding(0);
             this.MovieTitle.MaximumSize = new System.Drawing.Size(800, 300);
             this.MovieTitle.Name = "MovieTitle";
-            this.MovieTitle.Size = new System.Drawing.Size(311, 76);
+            this.MovieTitle.Size = new System.Drawing.Size(232, 56);
             this.MovieTitle.TabIndex = 3;
             this.MovieTitle.Text = "Lorem Ipsum";
             // 
@@ -70,7 +71,7 @@
             this.DescMovie.AutoSize = true;
             this.DescMovie.Font = new System.Drawing.Font("Poppins", 14F);
             this.DescMovie.ForeColor = System.Drawing.Color.Silver;
-            this.DescMovie.Location = new System.Drawing.Point(498, 123);
+            this.DescMovie.Location = new System.Drawing.Point(495, 116);
             this.DescMovie.MaximumSize = new System.Drawing.Size(800, 0);
             this.DescMovie.Name = "DescMovie";
             this.DescMovie.Size = new System.Drawing.Size(797, 204);

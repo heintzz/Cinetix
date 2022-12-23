@@ -31,9 +31,8 @@ namespace Cinetix
                             string src_img = reader.GetString(3);
 
                             MovieTitle.Text = title;
-                            NumOrder.Minimum = numOrder;
-                            MoviePoster.ImageLocation = src_img;
-                            ReservationDate.Text = date; ;
+                            AmountOfOrder.Text = numOrder.ToString();
+                            MoviePoster.ImageLocation = src_img;                            
                         }
                     }
                 }

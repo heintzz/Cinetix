@@ -34,37 +34,38 @@
             this.CinemaLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.ReservationDate = new System.Windows.Forms.DateTimePicker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.NumOrderLabel = new System.Windows.Forms.Label();
-            this.NumOrder = new System.Windows.Forms.NumericUpDown();
             this.EditBtn = new System.Windows.Forms.Button();
             this.BackToHome = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.AmountOfOrder = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.MoviePoster)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumOrder)).BeginInit();
             this.SuspendLayout();
             // 
             // MoviePoster
             // 
             this.MoviePoster.Location = new System.Drawing.Point(22, 29);
             this.MoviePoster.Name = "MoviePoster";
-            this.MoviePoster.Size = new System.Drawing.Size(440, 640);
+            this.MoviePoster.Size = new System.Drawing.Size(440, 702);
+            this.MoviePoster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.MoviePoster.TabIndex = 1;
             this.MoviePoster.TabStop = false;
             // 
             // MovieTitle
             // 
             this.MovieTitle.AutoSize = true;
-            this.MovieTitle.Font = new System.Drawing.Font("Ubuntu", 32F);
-            this.MovieTitle.Location = new System.Drawing.Point(482, 29);
+            this.MovieTitle.Font = new System.Drawing.Font("Ubuntu", 26F);
+            this.MovieTitle.Location = new System.Drawing.Point(494, 29);
             this.MovieTitle.Name = "MovieTitle";
-            this.MovieTitle.Size = new System.Drawing.Size(0, 51);
+            this.MovieTitle.Size = new System.Drawing.Size(92, 41);
             this.MovieTitle.TabIndex = 2;
+            this.MovieTitle.Text = "Title";
             // 
             // CinemaLabel
             // 
             this.CinemaLabel.AutoSize = true;
             this.CinemaLabel.Font = new System.Drawing.Font("Poppins", 24F);
-            this.CinemaLabel.Location = new System.Drawing.Point(489, 111);
+            this.CinemaLabel.Location = new System.Drawing.Point(492, 103);
             this.CinemaLabel.Name = "CinemaLabel";
             this.CinemaLabel.Size = new System.Drawing.Size(152, 56);
             this.CinemaLabel.TabIndex = 4;
@@ -74,7 +75,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Poppins", 24F);
-            this.label4.Location = new System.Drawing.Point(490, 222);
+            this.label4.Location = new System.Drawing.Point(493, 214);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(101, 56);
             this.label4.TabIndex = 5;
@@ -83,57 +84,21 @@
             // ReservationDate
             // 
             this.ReservationDate.Font = new System.Drawing.Font("Ubuntu", 20F);
-            this.ReservationDate.Location = new System.Drawing.Point(499, 279);
+            this.ReservationDate.Location = new System.Drawing.Point(501, 270);
             this.ReservationDate.MinDate = new System.DateTime(2022, 12, 21, 0, 0, 0, 0);
             this.ReservationDate.Name = "ReservationDate";
             this.ReservationDate.Size = new System.Drawing.Size(259, 38);
             this.ReservationDate.TabIndex = 6;
             // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Ubuntu", 20F);
-            this.textBox1.Location = new System.Drawing.Point(499, 170);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(259, 31);
-            this.textBox1.TabIndex = 8;
-            this.textBox1.Text = "Tubes Cinema XXI";
-            // 
             // NumOrderLabel
             // 
             this.NumOrderLabel.AutoSize = true;
             this.NumOrderLabel.Font = new System.Drawing.Font("Poppins", 24F);
-            this.NumOrderLabel.Location = new System.Drawing.Point(491, 338);
+            this.NumOrderLabel.Location = new System.Drawing.Point(493, 330);
             this.NumOrderLabel.Name = "NumOrderLabel";
             this.NumOrderLabel.Size = new System.Drawing.Size(296, 56);
             this.NumOrderLabel.TabIndex = 9;
             this.NumOrderLabel.Text = "Amount Of Order";
-            // 
-            // NumOrder
-            // 
-            this.NumOrder.Font = new System.Drawing.Font("Ubuntu", 20F);
-            this.NumOrder.Location = new System.Drawing.Point(502, 394);
-            this.NumOrder.Maximum = new decimal(new int[] {
-            9,
-            0,
-            0,
-            0});
-            this.NumOrder.Minimum = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.NumOrder.Name = "NumOrder";
-            this.NumOrder.ReadOnly = true;
-            this.NumOrder.Size = new System.Drawing.Size(53, 38);
-            this.NumOrder.TabIndex = 10;
-            this.NumOrder.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
             // 
             // EditBtn
             // 
@@ -165,16 +130,38 @@
             this.BackToHome.Text = "Home";
             this.BackToHome.Click += new System.EventHandler(this.BackToHome_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Ubuntu", 20F);
+            this.label1.Location = new System.Drawing.Point(497, 163);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(231, 33);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Tubes Cinema XXI";
+            // 
+            // AmountOfOrder
+            // 
+            this.AmountOfOrder.AutoSize = true;
+            this.AmountOfOrder.Font = new System.Drawing.Font("Ubuntu", 20F);
+            this.AmountOfOrder.Location = new System.Drawing.Point(497, 381);
+            this.AmountOfOrder.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.AmountOfOrder.Name = "AmountOfOrder";
+            this.AmountOfOrder.Size = new System.Drawing.Size(30, 33);
+            this.AmountOfOrder.TabIndex = 25;
+            this.AmountOfOrder.Text = "1";
+            // 
             // EditBookedMovie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1422, 1041);
+            this.Controls.Add(this.AmountOfOrder);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.BackToHome);
             this.Controls.Add(this.EditBtn);
-            this.Controls.Add(this.NumOrder);
             this.Controls.Add(this.NumOrderLabel);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.ReservationDate);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.CinemaLabel);
@@ -184,7 +171,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditBookedMovie";
             ((System.ComponentModel.ISupportInitialize)(this.MoviePoster)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumOrder)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,10 +183,10 @@
         private System.Windows.Forms.Label CinemaLabel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker ReservationDate;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label NumOrderLabel;
-        private System.Windows.Forms.NumericUpDown NumOrder;
         private System.Windows.Forms.Button EditBtn;
         private System.Windows.Forms.Label BackToHome;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label AmountOfOrder;
     }
 }
